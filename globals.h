@@ -1,0 +1,47 @@
+#ifndef GLOBALS_H
+#define GLOBALS_H
+#include "semaphore.h"
+#include "pthread.h"
+
+#define TUTOR_SLEEP_TIME 0.0002 // 0.2 ms
+
+struct student_info {
+    int ID;
+    int num_help;
+    int tutorID;
+};
+
+struct shared_info {
+    int** studentPriorityQueue;
+};
+
+extern int NUM_STUDENT;
+extern int NUM_TUTOR;
+extern int NUM_CHAIR;
+extern int NUM_HELP;
+
+extern int helpServed;
+extern int tutoringNum;
+extern int finished;
+extern struct shared_info info;
+
+//
+struct chairs_info {
+    int emptyChairs;
+    struct student_info** seatingList;
+};
+
+extern struct chairs_info chairs_info;
+
+// extern int coordinatorActive; // no longer needed
+// semaphores
+sem_t student_arrived;
+// sem_t tutor_ready;
+sem_t student_ready;
+// locks
+
+pthread_mutex_t seat_lock;
+pthread_mutex_t queue_lock;
+
+
+#endif

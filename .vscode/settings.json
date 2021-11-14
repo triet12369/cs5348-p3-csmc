@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.jsx": "javascriptreact",
+        "stdio.h": "c",
+        "t_student.c": "cpp",
+        "globals.h": "c",
+        "ratio": "c",
+        "thread": "cpp"
+    }
+}

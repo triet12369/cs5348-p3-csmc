@@ -3,7 +3,8 @@
 #include "semaphore.h"
 #include "pthread.h"
 
-#define TUTOR_SLEEP_TIME 0.0002 // 0.2 ms
+#define TUTOR_SLEEP_TIME 0.2 * 1000 // 0.2 ms
+#define T_SLEEP_PROGRAMMING 2 * 1000 // 2ms
 
 struct student_info {
     int ID;
@@ -23,6 +24,8 @@ extern int NUM_HELP;
 extern int helpServed;
 extern int tutoringNum;
 extern int finished;
+extern int totalRequest;
+extern int waitingNum;
 extern struct shared_info info;
 
 //

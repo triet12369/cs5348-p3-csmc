@@ -1,3 +1,4 @@
+#define _BSD_SOURCE
 #include "stdio.h"
 #include "stdlib.h"
 #include "globals.h"
@@ -55,6 +56,7 @@ void tutors_init(pthread_t* tutor_ptid) {
 int main(int argc, const char* argv[]) {
 
     if (argc != 5) {
+        dup2(STDERR_FILENO, STDOUT_FILENO);
         printf("Invalid arguments. Use csmc #students #tutors #chairs #help \n");
         return -1;
     }
@@ -63,7 +65,7 @@ int main(int argc, const char* argv[]) {
     NUM_TUTOR = atoi(argv[2]);
     NUM_CHAIR = atoi(argv[3]);
     NUM_HELP = atoi(argv[4]);
-    infoPrint();
+    // infoPrint();
 
     // initialize threads
     pthread_t student_ptid[NUM_STUDENT];

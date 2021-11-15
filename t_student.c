@@ -4,8 +4,6 @@
 #include "globals.h"
 #include "t_coordinator.h"
 
-#define T_SLEEP_PROGRAMMING 0.002 // 2ms
-
 // struct {
 //     int tutorID;
 //     int studentID;
@@ -13,7 +11,7 @@
 
 void action_programming(struct student_info* student) {
     float sleepTime = (float)rand()/(float)(RAND_MAX) * T_SLEEP_PROGRAMMING;
-    sleep(sleepTime);
+    usleep(sleepTime);
     // printf("Student %d slept for %f \n", student->ID, sleepTime);
 }
 
@@ -34,6 +32,7 @@ int seekHelp(struct student_info* student) {
     pthread_mutex_unlock(&seat_lock);
 
     // wake up coordinator
+    totalRequest++;
     sem_post(&student_arrived);
 
     while (1) {
@@ -75,6 +74,7 @@ void* t_student(void* stdNumber) {
     }
     sem_post(&student_arrived); // signal coordinator to stop
     // printf("Student %d exitting. \n", STUDENT_ID);
+    // printf("S Exitting. \n");
     pthread_exit(NULL);
     return NULL;
 }

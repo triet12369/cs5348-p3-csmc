@@ -37,7 +37,7 @@ void students_tutors_init(pthread_t* student_ptid, pthread_t* tutor_ptid) {
     for (int i = 0; i < NUM_TUTOR; ++i) {
         pthread_join(tutor_ptid[i], NULL);
     }
-    // pthread_exit(NULL);
+  
 }
 
 void tutors_init(pthread_t* tutor_ptid) {
@@ -50,7 +50,7 @@ void tutors_init(pthread_t* tutor_ptid) {
     for (int i = 0; i < NUM_TUTOR; ++i) {
         pthread_join(tutor_ptid[i], NULL);
     }
-    // pthread_exit(NULL);
+
 }
 
 int main(int argc, const char* argv[]) {
@@ -65,20 +65,18 @@ int main(int argc, const char* argv[]) {
     NUM_TUTOR = atoi(argv[2]);
     NUM_CHAIR = atoi(argv[3]);
     NUM_HELP = atoi(argv[4]);
-    // infoPrint();
-
-    // initialize threads
+ 
     pthread_t student_ptid[NUM_STUDENT];
     pthread_t coordinator;
     pthread_t tutor_ptid[NUM_TUTOR];
 
-    // start coordinator thread
+
     pthread_create(&coordinator, NULL, &t_coordinator, NULL);
 
-    // start students and tutors threads
+
     students_tutors_init(student_ptid, tutor_ptid);
     pthread_join(coordinator, NULL);
-    // tutors_init(tutor_ptid);
+
 
 
     return 0;

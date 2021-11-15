@@ -28,7 +28,7 @@ extern int totalRequest;
 extern int waitingNum;
 extern struct shared_info info;
 
-//
+
 struct chairs_info {
     int emptyChairs;
     struct student_info** seatingList;
@@ -36,12 +36,11 @@ struct chairs_info {
 
 extern struct chairs_info chairs_info;
 
-// extern int coordinatorActive; // no longer needed
-// semaphores
+
 sem_t student_arrived;
-// sem_t tutor_ready;
+
 sem_t student_ready;
-// locks
+
 
 pthread_mutex_t seat_lock;
 pthread_mutex_t queue_lock;

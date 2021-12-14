@@ -9,7 +9,7 @@ void printArr(int* arr, int size, char* header) {
     printf("\n");
 }
 
-]
+
 
 int insertIfNull(struct student_info** array, int arrSize, struct student_info* student) {
     int success = 0;
